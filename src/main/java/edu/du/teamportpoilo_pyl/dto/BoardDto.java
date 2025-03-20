@@ -12,6 +12,6 @@ public class BoardDto {
     private String author;
     private LocalDateTime created;
     private LocalDateTime updated;
-    private Long viewCount;
-    private Long likeCount;
+    private Long views;
+    private Long likes;
 }
