@@ -14,8 +14,14 @@ public class BoardService {
         this.boardMapper = boardMapper;
     }
 
-    public List<BoardDto> getAllBoards() {
-        return boardMapper.boardSelectAll();
+    public List<BoardDto> getAllBoardsByPage(int page, int size) {
+        int offset = (page - 1) * size;
+        return boardMapper.boardSelectAllByPage(size, offset);
+    }
+
+    public int getTotalPages(int size) {
+        int totalBoards = boardMapper.countBoards();
+        return (int) Math.ceil((double) totalBoards / size);
     }
 
     public BoardDto getBoardById (Long id) {
@@ -27,11 +33,15 @@ public class BoardService {
        boardMapper.boardInsert(board);
     }
 
-    public void updateBoard(BoardDto board) {
-        boardMapper.boardUpdate(board);
+    public void updateBoard(BoardDto board, Long id) {
+        boardMapper.boardUpdate(board, id);
     }
 
     public void deleteBoard(Long id) {
         boardMapper.boardDelete(id);
+    }
+
+    public void likeBoard(Long id) {
+        boardMapper.boardLikes(id);
     }
 }

@@ -1,7 +1,6 @@
 package edu.du.teamportpoilo_pyl;
 
 import edu.du.teamportpoilo_pyl.mapper.BoardMapper;
-import edu.du.teamportpoilo_pyl.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,8 @@ class TeamPortpoiloPylApplicationTests {
 
     @Test
     void contextLoads() {
-        boardMapper.boardSelectAll();
-        log.info(boardMapper.boardSelectAll().toString());
+        boardMapper.boardSelectAllByPage(1, 10);
+        log.info(boardMapper.boardSelectAllByPage(1, 10).toString());
         log.info(boardMapper.boardSelectById(1L).toString());
     }
 

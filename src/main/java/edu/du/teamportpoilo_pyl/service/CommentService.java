@@ -23,7 +23,7 @@ public class CommentService {
         commentMapper.insertComment(comment);
     }
 
-    public void deleteComment(CommentDto comment) {
-        commentMapper.deleteComment(comment);
+    public void deleteComment(Long id) {
+        commentMapper.deleteComment(id);
     }
 }

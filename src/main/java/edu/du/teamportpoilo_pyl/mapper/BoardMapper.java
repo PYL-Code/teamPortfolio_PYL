@@ -8,12 +8,15 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    @Select("select * from board")
+    @Select("select * from board order by id desc limit #{limit} offset #{offset}")
     @Results({
             @Result(property = "created", column = "created_at"),
             @Result(property = "updated", column = "updated_at")
     })
-    public List<BoardDto> boardSelectAll();
+    public List<BoardDto> boardSelectAllByPage(int limit, int offset);
+
+    @Select("SELECT COUNT(*) FROM board")
+    int countBoards();
 
     @Select("select * from board where id = #{id}")
     @Results({
@@ -25,8 +28,8 @@ public interface BoardMapper {
     @Insert("insert into board (title, content, author, created_at, views, likes) values (#{title}, #{content}, #{author}, now(), 0, 0)")
     public void boardInsert(BoardDto board);
 
-    @Update("update board set title = #{title}, content = #{content}, updated_at = now()")
-    public void boardUpdate(BoardDto board);
+    @Update("update board set title = #{board.title}, content = #{board.content}, updated_at = now() where id = #{id}")
+    public void boardUpdate(@Param("board") BoardDto board, @Param("id") Long id);
 
     @Delete("delete from board where id = #{id}")
     public void boardDelete(Long id);
