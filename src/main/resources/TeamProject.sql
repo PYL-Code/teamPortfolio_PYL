@@ -1,5 +1,7 @@
 create database if not exists teamproject;
 
+use teamproject;
+
 CREATE TABLE board (
     id INT AUTO_INCREMENT PRIMARY KEY,      -- 게시글 고유 ID
     title VARCHAR(255) NOT NULL,            -- 게시글 제목
@@ -47,6 +49,8 @@ VALUES
 ('user4', '1234', '박민수', 'user4@example.com'),
 ('user5', '1234', '최지우', 'user5@example.com');
 
--- table comments;
- drop table board;
- drop table comments;
+insert into teamproject.users (username, password, name, email)
+values ('admin', 1234, '관리자', 'admin@example.com');
+
+-- drop table board;
+-- drop table comments;

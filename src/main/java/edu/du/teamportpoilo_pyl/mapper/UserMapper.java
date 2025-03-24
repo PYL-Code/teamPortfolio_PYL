@@ -6,10 +6,16 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface UserMapper {
 
-    @Insert("insert into users (username, password, name, email) values (#{userid}, #{password}, #{name}, #{email})")
+    @Select("select * from users where username = {userid}")
     @Results({
             @Result(property = "userId", column = "username"),
             @Result(property = "created", column = "created_at")
+    })
+    public UserDto selectByUserId(String username);
+
+    @Insert("insert into users (username, password, name, email) values (#{userId}, #{password}, #{name}, #{email})")
+    @Results({
+            @Result(property = "userId", column = "username")
     })
     public void insertUser(UserDto user);
 }

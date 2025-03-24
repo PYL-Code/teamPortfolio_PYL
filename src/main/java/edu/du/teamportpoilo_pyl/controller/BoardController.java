@@ -31,20 +31,20 @@ public class BoardController {
         model.addAttribute("board", boardService.getAllBoardsByPage(page, size));
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", boardService.getTotalPages(size));
-        return "boardList";
+        return "/board/boardList";
     }
 
     @GetMapping("/board/{id}")
     public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model) {
         model.addAttribute("board", boardService.getBoardById(id));
         model.addAttribute("comments", commentService.getAllComments(id));
-        return "viewBoard";
+        return "/board/viewBoard";
     }
 
     @GetMapping("/board/{id}/edit")
     public String editBoardForm(@PathVariable Long id, @ModelAttribute BoardDto boardDto, Model model) {
         model.addAttribute("board", boardService.getBoardById(id));
-        return "editBoard";
+        return "/board/editBoard";
     }
 
     @PostMapping("/board/{id}/edit")
@@ -66,8 +66,8 @@ public class BoardController {
     }
 
     @GetMapping("/board/write")
-    public String writeBoard(Model model) {
-        return "writeBoard";
+    public String writeBoard() {
+        return "/board/writeBoard";
     }
 
     @PostMapping("/board/write")
