@@ -26,8 +26,12 @@ public class UserController {
     public String login(@RequestParam String userId, @RequestParam String password,
                         HttpSession session,  Model model) {
 
-        session.setAttribute("userId", userId);
-        return "redirect:/index";
+        if (userService.userLogin(userId, password, session)) {
+            return "redirect:/";
+        } else {
+            model.addAttribute("error", "아이디나 비밀번호가 일치하지 않습니다.");
+            return "login/login";
+        }
     }
 
     @GetMapping("signup")

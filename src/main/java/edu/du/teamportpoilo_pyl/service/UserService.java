@@ -2,7 +2,6 @@ package edu.du.teamportpoilo_pyl.service;
 
 import edu.du.teamportpoilo_pyl.dto.UserDto;
 import edu.du.teamportpoilo_pyl.mapper.UserMapper;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class UserService {
         return userMapper.selectByUserId(userId);
     }
 
-    public Boolean UserLogin(String UserId, String password, HttpSession session) {
+    public Boolean userLogin(String UserId, String password, HttpSession session) {
         UserDto userDto = userMapper.selectByUserId(UserId);
 
         if (userDto == null) {
