@@ -27,7 +27,7 @@ public class UserController {
                         HttpSession session,  Model model) {
 
         if (userService.userLogin(userId, password, session)) {
-            return "redirect:/";
+            return "redirect:/list";
         } else {
             model.addAttribute("error", "아이디나 비밀번호가 일치하지 않습니다.");
             return "login/login";

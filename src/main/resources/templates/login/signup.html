@@ -11,10 +11,14 @@
       max-width: 400px;
       margin: 100px auto;
     }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
   </style>
 </head>
 <body>
-<div th:replace="header :: header"></div>
+<div th:replace="~{header :: header}"></div>
 <div class="container signup-container">
   <h2 class="text-center mb-4">회원가입</h2>
   <form th:action="@{/user/signup}" method="post">
@@ -45,6 +49,7 @@
     <!-- 회원가입 버튼 -->
     <button type="submit" class="btn btn-primary w-100">가입하기</button>
   </form>
+  <div class="text-center mt-2"><span>이미 계정이 있으신가요? </span><a th:href="@{/user/login}">로그인</a></div>
 </div>
 </body>
 </html>

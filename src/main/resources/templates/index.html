@@ -1,15 +1,65 @@
 <!DOCTYPE html>
-<meta charset="ko" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>메인 페이지</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* 배경 이미지 스타일 */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1534271057238-c2c170a76672?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+                        center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* 카드 스타일 */
+        .content-section {
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-    <!-- 헤더를 포함 -->
-    <div th:replace="header :: header"></div>
-    <h1>메인 페이지</h1>
-    <a th:href="@{/list}">게시판으로 바로가기</a>
+
+<!-- 헤더 포함 -->
+<div th:replace="~{header :: header}"></div>
+
+<!-- 히어로 섹션 -->
+<div class="hero text-center">
+    <h1>환영합니다! 🏆</h1>
+</div>
+
+<!-- 메인 컨텐츠 -->
+<div class="container content-section">
+    <div class="row">
+        <!-- 소개 카드 -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">게시판 시스템</h5>
+                    <p class="card-text">다양한 글을 공유하고 의견을 나눌 수 있는 공간입니다.</p>
+                    <a th:href="@{/list}" class="btn btn-primary">게시판으로 이동</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 추가 설명 카드 -->
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">회원 시스템</h5>
+                    <p class="card-text">회원가입 후 로그인하여 다양한 기능을 이용해보세요!</p>
+                    <a th:href="@{/user/signup}" class="btn btn-success">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -4,6 +4,7 @@ import edu.du.teamportpoilo_pyl.dto.BoardDto;
 import edu.du.teamportpoilo_pyl.dto.CommentDto;
 import edu.du.teamportpoilo_pyl.service.BoardService;
 import edu.du.teamportpoilo_pyl.service.CommentService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model) {
+    public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model, HttpSession httpSession) {
         model.addAttribute("board", boardService.getBoardById(id));
         model.addAttribute("comments", commentService.getAllComments(id));
         return "/board/viewBoard";
@@ -60,8 +61,8 @@ public class BoardController {
     }
 
     @PostMapping("/board/{id}/comment/delete")
-    public String deleteComment(@PathVariable Long id, @ModelAttribute CommentDto commentDto) {
-        commentService.deleteComment(commentDto.getId());
+    public String deleteComment(@PathVariable Long id, @ModelAttribute CommentDto commentDto, HttpSession session) {
+        commentService.deleteComment(session, commentDto.getId());
         return "redirect:/board/" + id;
     }
 

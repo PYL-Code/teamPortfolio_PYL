@@ -13,6 +13,9 @@ public interface CommentMapper {
     })
     public List<CommentDto> commentSelectByPostId(Long id);
 
+    @Select("select author from comments where id = #{id}")
+    public String getAuthorById(Long id);
+
     @Insert("insert into comments (post_id, author, comment) values (#{postId}, #{author}, #{comment})")
     public void insertComment(CommentDto comment);
 
