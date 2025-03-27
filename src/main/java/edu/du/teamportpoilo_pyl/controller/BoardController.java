@@ -65,22 +65,6 @@ public class BoardController {
         return "redirect:/board/" + id;
     }
 
-    @PostMapping("/board/{id}/comment/delete")
-    public ResponseEntity<Map<String, Object>> deleteComment(@PathVariable Long id,
-                                                             @ModelAttribute CommentDto commentDto,
-                                                             HttpSession session) {
-        Map<String, Object> response = new HashMap<>();
-        String nameSession = (String) session.getAttribute("name");
-
-        if (!commentDto.getAuthor().equals(nameSession)) {
-            response.put("success", false);
-            response.put("message", "게시글 삭제 권한이 없습니다.");
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
-        }
-
-        commentService.deleteComment(commentDto.getId());
-        return ResponseEntity.ok(response);
-    }
 
     @GetMapping("/board/write")
     public String writeBoard() {

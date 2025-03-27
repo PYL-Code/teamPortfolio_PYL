@@ -82,8 +82,11 @@
             <p><strong th:text="${comment.author}">작성자</strong> - <span th:text="${#temporals.format(comment.created, 'yyyy-MM-dd HH:mm')}">댓글 작성일</span></p>
             <p th:text="${comment.comment}">댓글 내용</p>
             <form th:action="@{/board/{id}/comment/delete(id=${board.id})}" name="delComment" method="post">
-                <input type="hidden" name="id" th:value="${comment.id}"/>
-                <button type="submit" class="btn btn-danger btn-sm delete-btn">삭제</button>
+                <input type="hidden" id="comment-id" name="id" th:value="${comment.id}"/>
+                <input type="hidden" id="comment-name" name="author" th:value="${comment.author}"/>
+                <button type="button" class="btn btn-danger btn-sm delete-btn">삭제</button>
+                <!-- submit이 아닌 button 타입으로 설정해야 폼이 자동으로 제출되지 않음 -->
+                <!-- submit으로 설정하면 일반 요청이 제출됨. -->
             </form>
         </div>
     </div>
@@ -108,6 +111,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="viewBoard.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="/js/viewBoard.js"></script>
 </body>
 </html>
