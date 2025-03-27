@@ -24,10 +24,14 @@
       background-color: #0056b3;
       color: white;
     }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
   </style>
 </head>
 <body>
-<div th:replace="header :: header"></div>
+<div th:replace="~{header :: header}"></div>
 <!-- 로그인 폼 -->
 <div class="login-container">
   <h2 class="text-center mb-4">로그인</h2>
@@ -50,7 +54,7 @@
     <button type="submit" class="btn btn-custom w-100">로그인</button>
   </form>
   <div class="mt-2 text-center">
-    <a class="btn btn-custom w-100" th:href="@{/user/signup}">회원가입</a>
+    <span>계정이 없으신가요? </span><a th:href="@{/user/signup}">회원가입</a>
   </div>
 </div>
 

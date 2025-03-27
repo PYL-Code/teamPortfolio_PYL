@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- 헤더를 포함 -->
-<div th:replace="header :: header"></div>
+<div th:replace="~{header :: header}"></div>
 <div class="container mt-5">
   <h2>게시글 수정</h2>
   <form th:action="@{/board/{id}/edit(id=${board.id})}" method="post" th:object="${board}">

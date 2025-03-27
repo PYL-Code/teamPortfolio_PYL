@@ -41,7 +41,7 @@ public class BoardController {
     }
 
     @GetMapping("/board/{id}")
-    public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model) {
+    public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model, HttpSession httpSession) {
         model.addAttribute("board", boardService.getBoardById(id));
         model.addAttribute("comments", commentService.getAllComments(id));
         return "/board/viewBoard";

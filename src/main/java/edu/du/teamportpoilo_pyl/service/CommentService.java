@@ -2,6 +2,7 @@ package edu.du.teamportpoilo_pyl.service;
 
 import edu.du.teamportpoilo_pyl.dto.CommentDto;
 import edu.du.teamportpoilo_pyl.mapper.CommentMapper;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

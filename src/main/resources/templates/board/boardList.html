@@ -13,12 +13,16 @@
         .container .write-btn {
             align-self: flex-end; /* 버튼을 오른쪽 끝으로 정렬 */
         }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
     </style>
     <title>게시판 목록</title>
 </head>
 <body>
 <!-- 헤더를 포함 -->
-<div th:replace="header :: header"></div>
+<div th:replace="~{header :: header}"></div>
 <div class="container mt-4">
     <h2 class="mb-4">게시판 목록</h2>
     <table class="table table-bordered table-striped table-hover">
