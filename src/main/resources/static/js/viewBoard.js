@@ -3,7 +3,7 @@ $(document).ready(function() {
         let commentId = document.getElementById("comment-id");
         let boardId = document.getElementById("board-id")
 
-        console.log("작동한다");
+        // console.log("작동한다");
 
         if (!confirm("댓글을 삭제하시겠습니까?")) return;
         //return: 실행 중단. 함수를 멈추고 빠져나옴

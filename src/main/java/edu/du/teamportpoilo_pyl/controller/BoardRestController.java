@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 public class BoardRestController {
+
     private final BoardService boardService;
     private final CommentService commentService;
 
@@ -23,6 +24,7 @@ public class BoardRestController {
         this.boardService = boardService;
         this.commentService = commentService;
     }
+
     @PostMapping("/board/{id}/comment/delete")
     public ResponseEntity<Map<String, Object>> deleteComment(@PathVariable Long id,
                                                              @ModelAttribute CommentDto commentDto,
