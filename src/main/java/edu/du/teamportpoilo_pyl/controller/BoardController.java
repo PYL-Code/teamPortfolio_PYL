@@ -44,6 +44,7 @@ public class BoardController {
     public String viewBoard(@PathVariable Long id, @ModelAttribute CommentDto commentDto, Model model, HttpSession httpSession) {
         model.addAttribute("board", boardService.getBoardById(id));
         model.addAttribute("comments", commentService.getAllComments(id));
+//        System.out.println(commentService.getAllComments(id));
         return "/board/viewBoard";
     }
 
