@@ -1,28 +1,68 @@
 # 게시판
 
+## 프로젝트 소개
+Spring Boot 기반의 CRUD 게시판 웹 애플리케이션   
+사용자 회원가입, 로그인, 게시글 및 댓글 작성/수정/삭제 기능 포함   
+MyBatis + MySQL 통해 DB 연동
+
+
+## 🔧 사용 기술
+
+| 구분 | 기술 스택 |
+|------|----------|
+| Language | Java 17 |
+| Framework | Spring Boot 3.4.3, MyBatis |
+| DB | MySQL |
+| View | Thymeleaf |
+| ORM/Mapper | MyBatis |
+| Dependency Management | Gradle |
+| Tool | Lombok, Spring DevTools |
+
+
+## 📁 프로젝트 구조
+
+```
+src
+├── main
+│   ├── java
+│   │   └── edu.du.teamportpoilo_pyl
+│   │       ├── controller      # BoardController, UserController, API Controller
+│   │       ├── dto             # BoardDto, UserDto, CommentDto
+│   │       ├── mapper          # MyBatis Mapper Interfaces
+│   │       ├── service         # 비즈니스 로직 처리
+│   │       ├── config          # 웹 설정 및 인터셉터 등록
+│   │       └── interceptor     # 로그인 검증 인터셉터
+│   └── resources
+│       ├── templates           # Thymeleaf 템플릿
+│       └── static              # 정적 리소스 (js, css)
+└── test
+    └── java
+        └── TeamPortpoiloPylApplicationTests.java
+```
+
+
 ## 기능 소개
-회원가입 및 게시판 기능이 있습니다.
 
 ### 로그인 및 회원가입
-간단한 crud로 이루어져 있습니다.   
+- 회원가입 / 로그인 / 로그아웃
+- 로그인한 사용자만 게시글/댓글 작성 가능
+
 ![스크린샷 2025-06-16 121924](https://github.com/user-attachments/assets/d40d6d03-aef6-4244-949d-e05a859849bf)
 ![스크린샷 2025-06-16 122009](https://github.com/user-attachments/assets/1913e3b1-beaa-4ecc-9a2c-4a25e2d497f2)
 
 
 ### 게시판
-로그인한 사용자는 게시글을 작성하고 게시글에 댓글을 작성할 수 있습니다.   
-로그인하지 않은 사용자가 게시글 작성이나 댓글 작성을 시도할 경우 로그인 화면으로 리다이렉트 됩니다.   
+- 게시글 목록, 상세보기
+- 로그인 사용자 전용
+  - 게시글 작성 / 수정 / 삭제
+  - 댓글 작성 / 삭제 
+    - 본인이 작성한 게시글/댓글만 삭제 가능
+
 ![스크린샷 2025-06-16 122212](https://github.com/user-attachments/assets/73493910-2c2a-4c92-a11b-b8f1e89a213a)
 ![스크린샷 2025-06-16 122430](https://github.com/user-attachments/assets/b65afa4a-5e3b-410f-8691-73bb0ad55e12)
 
 
-## 개선점, 배운 점
-사용자 검증으로 사용자별 작성 댓글만 삭제할 수 있도록 하는 기능 구현 중 오류가 발생하였습니다.   
-사용자 아이디를 DB에서 정수 값으로 가져와서 비교하고 검증해야 하는데,   
-DB에 따로 정수 값으로 이루어진 pk를 만들지 않았습니다.   
-자연히 사용자의 문자열 id 값을 비교하여 검증하게 되었고,   
-그로 인해 개발 과정에서 Thymeleaf가 한글 문자열 값을 백엔드로 전송하는 과정에서 오류가 발생하였습니다.   
-해당 오류로 인해 사용자를 검증하여 글 수정이나 삭제 권한을 부여하는 기능 구현에 모두 문제가 생겼습니다.
-
-이 문제를 통해 pk를 문자열로 잡을 경우에 발생할 수 있는 문제를  경험하였습니다.   
-이후로 진행한 프로젝트에서는 따로 숫자로 되어 있는 id 값을 만들어 개발하고 있습니다.
+## 개선점
+- 문제: 사용자 ID를 문자열로 비교하여 검증 오류 발생
+- 원인: 한글 ID를 Thymeleaf에서 제대로 전송하지 못해 발생
+- 해결 방안: 문자열 ID 대신 정수형 PK 도입 고려, 데이터 검증 방식 개선
