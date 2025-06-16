@@ -4,14 +4,16 @@
 회원가입 및 게시판 기능이 있습니다.
 
 ### 로그인 및 회원가입
-간단한 crud로 이루어져 있습니다. 
-
+간단한 crud로 이루어져 있습니다.   
+![스크린샷 2025-06-16 121924](https://github.com/user-attachments/assets/d40d6d03-aef6-4244-949d-e05a859849bf)
+![스크린샷 2025-06-16 122009](https://github.com/user-attachments/assets/1913e3b1-beaa-4ecc-9a2c-4a25e2d497f2)
 
 
 ### 게시판
 로그인한 사용자는 게시글을 작성하고 게시글에 댓글을 작성할 수 있습니다.   
 로그인하지 않은 사용자가 게시글 작성이나 댓글 작성을 시도할 경우 로그인 화면으로 리다이렉트 됩니다.   
-
+![스크린샷 2025-06-16 122212](https://github.com/user-attachments/assets/73493910-2c2a-4c92-a11b-b8f1e89a213a)
+![스크린샷 2025-06-16 122430](https://github.com/user-attachments/assets/b65afa4a-5e3b-410f-8691-73bb0ad55e12)
 
 
 ## 개선점, 배운 점
